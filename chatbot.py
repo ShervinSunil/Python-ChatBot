@@ -2,16 +2,16 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 
+# Explicitly point to the .env file in the new directory
+dotenv_path = os.path.join("E:/python/Chat Bot", ".env")
+load_dotenv(dotenv_path)
 
-load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("API key not found. Please set GEMINI_API_KEY in .env")
 
-
 genai.configure(api_key=api_key)
-
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 chat = model.start_chat()
